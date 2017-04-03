@@ -10,8 +10,9 @@ Build-Type:          Custom
 Cabal-Version:       >=1.10
 Category:            FFI
 
-Flag SSL
+Flag ssl
   Description: Enable SSL APIs
+  Default: False
 
 Extra-source-files:
   libgit2/deps/http-parser/*.h
@@ -213,7 +214,7 @@ Library
     libgit2/src
     libgit2/deps/http-parser
 
-  if flag(SSL)
+  if flag(ssl)
     cc-options: -DGIT_THREADS -D_FILE_OFFSET_BITS=64 -DGIT_OPENSSL -Wno-format
   else
     cc-options: -DGIT_THREADS -D_FILE_OFFSET_BITS=64 -Wno-format
@@ -233,7 +234,7 @@ Library
       libgit2/src/win32/utf-conv.c
     include-dirs:
       libgit2/src/win32
-    if flag(SSL)
+    if flag(ssl)
       extra-libraries:
         ws2_32, regex, winhttp, crypt32, rpcrt4, ssl, crypto
     else
@@ -247,7 +248,7 @@ Library
       libgit2/src/unix/realpath.c
     include-dirs:
       libgit2/src/unix
-    if flag(SSL) && os(darwin)
+    if flag(ssl) && os(darwin)
       include-dirs: /usr/local/opt/openssl/include
       extra-lib-dirs: /usr/local/opt/openssl/lib
     extra-libraries:
