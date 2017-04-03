@@ -238,7 +238,7 @@ Library
         ws2_32, regex, winhttp, crypt32, rpcrt4, ssl, crypto
     else
       extra-libraries:
-        ws2_32, regex, winhttp, crypt32, rpcrt4, crypto
+        ws2_32, regex, winhttp, crypt32, rpcrt4
   else
     cc-options: -D_GNU_SOURCE -Wno-deprecated-declarations
     c-sources:
