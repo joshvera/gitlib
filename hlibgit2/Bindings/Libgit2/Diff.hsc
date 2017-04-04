@@ -129,29 +129,44 @@ import Bindings.Libgit2.Refs
                                    const char * matched_pathspec,
                                    void * payload); -}
 #callback git_diff_notify_cb , Ptr (<git_diff>) -> Ptr (<git_diff_delta>) -> CString -> Ptr () -> IO CInt
+
+{- typedef int (*git_diff_progress_cb)(
+            const git_diff *diff_so_far,
+            const char *old_path,
+            const char *new_path,
+            void *payload);
+-}
+#callback git_diff_progress_cb , Ptr (<git_diff>) -> CString -> CString -> Ptr () -> IO CInt
+
 {- typedef struct {
             unsigned int version;
             uint32_t flags;
+            git_submodule_ignore_t ignore_submodules;
+            git_strarray pathspec;
+            git_diff_notify_cb notify_cb;
+            git_diff_progress_cb progress_cb;
+            void *payload;
             uint16_t context_lines;
             uint16_t interhunk_lines;
+            uint16_t id_abbrev;
+            git_off_t max_size;
             const char * old_prefix;
             const char * new_prefix;
-            git_strarray pathspec;
-            git_off_t max_size;
-            git_diff_notify_cb notify_cb;
-            void * notify_payload;
         } git_diff_options; -}
 #starttype git_diff_options
 #field version , CUInt
 #field flags , CUInt
-#field context_lines , CUShort
-#field interhunk_lines , CUShort
+#field ignore_submodules , <git_submodule_ignore_t>
+#field pathspec , <git_strarray>
+#field notify_cb , <git_diff_notify_cb>
+#field progress_cb , <git_diff_progress_cb>
+#field payload , Ptr ()
+#field context_lines , CUInt
+#field interhunk_lines , CUInt
+#field id_abbrev , CUInt
+#field max_size , <git_off_t>
 #field old_prefix , CString
 #field new_prefix , CString
-#field pathspec , <git_strarray>
-#field max_size , CLong
-#field notify_cb , <git_diff_notify_cb>
-#field notify_payload , Ptr ()
 #stoptype
 {- typedef int (* git_diff_file_cb)(const git_diff_delta * delta,
                                  float progress,
@@ -345,7 +360,7 @@ import Bindings.Libgit2.Refs
 #num GIT_DIFF_FORMAT_RAW
 #num GIT_DIFF_FORMAT_NAME_ONLY
 #num GIT_DIFF_FORMAT_NAME_STATUS
-  
+
 #ccall git_diff_print , Ptr <git_diff> -> <git_diff_format_t> -> <git_diff_line_cb> -> Ptr () -> IO CInt
 
 #ccall git_diff_blobs , Ptr <git_blob> -> CString -> Ptr <git_blob> -> CString -> Ptr <git_diff_options> -> <git_diff_file_cb> -> <git_diff_binary_cb> -> <git_diff_hunk_cb> -> <git_diff_line_cb> -> Ptr () -> IO CInt
