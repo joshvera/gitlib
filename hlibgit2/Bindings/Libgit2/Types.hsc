@@ -138,3 +138,31 @@ import Bindings.Libgit2.Common
 {-  #opaque_t git_remote_head -}
 {- typedef struct git_remote_callbacks git_remote_callbacks; -}
 {-  #opaque_t git_remote_callbacks -}
+
+
+{- typedef enum {
+            GIT_SUBMODULE_UPDATE_DEFAULT = -1,
+            GIT_SUBMODULE_UPDATE_CHECKOUT = 0,
+            GIT_SUBMODULE_UPDATE_REBASE = 1,
+            GIT_SUBMODULE_UPDATE_MERGE = 2,
+            GIT_SUBMODULE_UPDATE_NONE = 3
+        } git_submodule_update_t; -}
+#integral_t git_submodule_update_t
+#num GIT_SUBMODULE_UPDATE_DEFAULT
+#num GIT_SUBMODULE_UPDATE_CHECKOUT
+#num GIT_SUBMODULE_UPDATE_REBASE
+#num GIT_SUBMODULE_UPDATE_MERGE
+#num GIT_SUBMODULE_UPDATE_NONE
+{- typedef enum {
+            GIT_SUBMODULE_IGNORE_DEFAULT = -1,
+            GIT_SUBMODULE_IGNORE_NONE = 0,
+            GIT_SUBMODULE_IGNORE_UNTRACKED = 1,
+            GIT_SUBMODULE_IGNORE_DIRTY = 2,
+            GIT_SUBMODULE_IGNORE_ALL = 3
+        } git_submodule_ignore_t; -}
+#integral_t git_submodule_ignore_t
+#num GIT_SUBMODULE_IGNORE_UNSPECIFIED
+#num GIT_SUBMODULE_IGNORE_NONE
+#num GIT_SUBMODULE_IGNORE_UNTRACKED
+#num GIT_SUBMODULE_IGNORE_DIRTY
+#num GIT_SUBMODULE_IGNORE_ALL

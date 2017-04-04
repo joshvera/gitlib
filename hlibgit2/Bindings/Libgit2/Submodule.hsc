@@ -11,32 +11,6 @@ import Bindings.Libgit2.Oid
 {- typedef struct git_submodule git_submodule; -}
 #opaque_t git_submodule
 {- typedef enum {
-            GIT_SUBMODULE_UPDATE_DEFAULT = -1,
-            GIT_SUBMODULE_UPDATE_CHECKOUT = 0,
-            GIT_SUBMODULE_UPDATE_REBASE = 1,
-            GIT_SUBMODULE_UPDATE_MERGE = 2,
-            GIT_SUBMODULE_UPDATE_NONE = 3
-        } git_submodule_update_t; -}
-#integral_t git_submodule_update_t
-#num GIT_SUBMODULE_UPDATE_DEFAULT
-#num GIT_SUBMODULE_UPDATE_CHECKOUT
-#num GIT_SUBMODULE_UPDATE_REBASE
-#num GIT_SUBMODULE_UPDATE_MERGE
-#num GIT_SUBMODULE_UPDATE_NONE
-{- typedef enum {
-            GIT_SUBMODULE_IGNORE_DEFAULT = -1,
-            GIT_SUBMODULE_IGNORE_NONE = 0,
-            GIT_SUBMODULE_IGNORE_UNTRACKED = 1,
-            GIT_SUBMODULE_IGNORE_DIRTY = 2,
-            GIT_SUBMODULE_IGNORE_ALL = 3
-        } git_submodule_ignore_t; -}
-#integral_t git_submodule_ignore_t
-#num GIT_SUBMODULE_IGNORE_UNSPECIFIED
-#num GIT_SUBMODULE_IGNORE_NONE
-#num GIT_SUBMODULE_IGNORE_UNTRACKED
-#num GIT_SUBMODULE_IGNORE_DIRTY
-#num GIT_SUBMODULE_IGNORE_ALL
-{- typedef enum {
             GIT_SUBMODULE_STATUS_IN_HEAD = 1u << 0,
             GIT_SUBMODULE_STATUS_IN_INDEX = 1u << 1,
             GIT_SUBMODULE_STATUS_IN_CONFIG = 1u << 2,
